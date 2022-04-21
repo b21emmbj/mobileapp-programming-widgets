@@ -1,42 +1,61 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Jag valde att behålla den förinlagda constraintlayouten i denna uppgift. Alla komponenter läggs till på appens startskärm och koden som läggs till finns i filen activity_main.xml. 
 
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+En TextView placerades som en header med en välkomsttext. Positioneringen justerades med att sätta constraints och med en marginal. Extra styling av texten lades till för ökat fokus. Se Figur 1 för förtydligande av beskriven implementation.    
+Figur 1
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+<TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Välkommen"
+        android:layout_marginTop="20dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+Inuti constraintlayouten placerades en widget CardView, med begränsningen (constraint) till att positioneras under komponenten med idet "header" (Se figur 2 för förtydligande). 
+Denna skapades för att samla ihop flera komponenter som hör ihop och dessa skapas senare i uppgiften.
+Figur 2
+```
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_margin="30dp"
+        app:cardCornerRadius="200dp"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+```
 
-![](android.png)
+Inuti constraintlayouten med idet "card-body" placerades en bildelement (ImageView). Denna bild är hämtad från his.se och inlagd i filen drawable. 
+Här är positioneringen satt med hjälp av constraints till att vara i mitten av föräldrakomponenten horisontellt och vertikalt placerad till toppen av föräldrakomponenten. 
+Marginalen som är satt gör så att bilden skjuts ner vertikalt så att bilden hamnar en bit ner från vart den är begränsad till. 
+Figur 3
+```
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="50dp"
+        app:srcCompat="@drawable/his_se_logo_web"
+        android:contentDescription="his logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+```
 
-Läs gärna:
+## Skärmbild från appen
+![](Sreenshot.png)
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
