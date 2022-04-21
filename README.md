@@ -21,7 +21,8 @@ Figur 1
 ```
 
 Inuti constraintlayouten placerades en widget CardView, med begränsningen (constraint) till att positioneras under komponenten med idet "header" (Se figur 2 för förtydligande). 
-Denna skapades för att samla ihop flera komponenter som hör ihop och dessa skapas senare i uppgiften.
+En styling av komponenten implementerades och en till constraintlayout placerades inuti CardView där flera komponenter kommer placeras senare som tillhör "kortet".
+
 Figur 2
 ```
     <androidx.cardview.widget.CardView
@@ -39,9 +40,10 @@ Figur 2
                     android:layout_height="match_parent">
 ```
 
-Inuti constraintlayouten med idet "card-body" placerades en bildelement (ImageView). Denna bild är hämtad från his.se och inlagd i filen drawable. 
+Inuti constraintlayouten med idet "card-body" placerades bl.a. ett bildelement (ImageView). Denna bild är hämtad från his.se och inlagd i filen drawable. 
 Här är positioneringen satt med hjälp av constraints till att vara i mitten av föräldrakomponenten horisontellt och vertikalt placerad till toppen av föräldrakomponenten. 
-Marginalen som är satt gör så att bilden skjuts ner vertikalt så att bilden hamnar en bit ner från vart den är begränsad till. 
+Marginalen som är satt gör så att bilden skjuts ner vertikalt så att bilden hamnar en bit ner från vart den är begränsad till. Se figur 3 för förtydligande. 
+
 Figur 3
 ```
     <ImageView
@@ -55,6 +57,8 @@ Figur 3
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 ```
+
+Flera komponenter lades till för att nå slutresultatet som går att se i skärmbilden här nedan. Men koden för dessa utelämnas från denna rapport då den är av liknande komponering som syns i Figur 3.
 
 ## Skärmbild från appen
 ![](Screenshot.png)
