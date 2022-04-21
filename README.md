@@ -57,5 +57,5 @@ Figur 3
 ```
 
 ## Skärmbild från appen
-![](Sreenshot.png)
+![](Screenshot.png)
 
